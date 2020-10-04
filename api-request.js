@@ -1,6 +1,6 @@
 const subjects = ["football", "uknews", "travel"];
 const apiKey = "9wur7sdh84azzazdt3ye54k4";
-const mainUrl = "https://content.guardianapis.com/search?q=";
+const mainUrl = "https://content.guardianapis.com/search?";
 const articles = {};
 
 window.addEventListener("load", () => {
@@ -24,9 +24,24 @@ const changeSelectedTab = (clickedTab) => {
     document.getElementById(currId).style.display = "block";
 };
 
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 const getLatestNews = async () => {
+    let today = new Date().toISOString();
+    today = formatDate(today);
+    const options = "use-date=published&order-by=newest&";
     for(let subject of subjects) {
-        let url = mainUrl + subject + "&api-key=" + apiKey;
+        let url = mainUrl + options + "to-date=" + today + "&q=" +subject + "&api-key=" + apiKey;
         let response = await fetch(url);
         if (response.ok) {
             let json = await response.json();
