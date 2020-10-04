@@ -43,15 +43,18 @@ const getLatestNews = async () => {
         }
     }
     populateCurrHtml();
-    //To use
-    // webTitle be displayed
-    // trailText be displayed
-    // webTitle linked to webUrl
 };
 
 const populateCurrHtml = () => {
     console.log(articles);
     for(let subject of subjects){
-        console.log(articles[subject]);
+        const parent = document.getElementById(subject);
+        for(let article of articles[subject]){
+            const entry = document.createElement("a");
+            entry.innerHTML = article[0];
+            entry.setAttribute("href", article[1]);
+            parent.appendChild(entry);
+            console.log(article);
+        }
     }
 };
