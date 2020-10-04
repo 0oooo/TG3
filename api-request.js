@@ -2,13 +2,18 @@ const subjects = ["football", "uknews", "travel"];
 const apiKey = "9wur7sdh84azzazdt3ye54k4";
 const mainUrl = "https://content.guardianapis.com/search?";
 const articles = {};
+const options = "use-date=published&order-by=newest&";
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
     const selectedTab = document.getElementsByClassName("selected")[0];
     const id = selectedTab.id.replace("header", "");
     document.getElementById(id).style.display = "block";
 
-    getLatestNews();
+    try{
+        await getLatestNews();
+    }catch(e){
+        console.log(`Error with fetching the latest news + ${e}`);
+    }
 });
 
 const changeSelectedTab = (clickedTab) => {
@@ -24,8 +29,8 @@ const changeSelectedTab = (clickedTab) => {
     document.getElementById(currId).style.display = "block";
 };
 
-function formatDate(date) {
-    var d = new Date(date),
+const formatDate = (date) => {
+    let d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
@@ -34,12 +39,14 @@ function formatDate(date) {
     if (day.length < 2) day = '0' + day;
 
     return [year, month, day].join('-');
-}
+};
+
+
 
 const getLatestNews = async () => {
     let today = new Date().toISOString();
     today = formatDate(today);
-    const options = "use-date=published&order-by=newest&";
+
     for(let subject of subjects) {
         let url = mainUrl + options + "to-date=" + today + "&q=" +subject + "&api-key=" + apiKey;
         let response = await fetch(url);
@@ -73,3 +80,7 @@ const populateCurrHtml = () => {
         }
     }
 };
+
+
+
+module.exports = formatDate;
