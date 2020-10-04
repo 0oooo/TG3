@@ -26,7 +26,7 @@ body{
     padding-top: 1.2rem;
 }
 
-#selected{
+.selected{
     background-color: #376180;
     color: whitesmoke;
 }

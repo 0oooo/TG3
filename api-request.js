@@ -1,6 +1,8 @@
 const changeSelectedTab = (clickedTab) => {
-    const selectedTab = document.getElementById("selected");
+    const selectedTab = document.getElementsByClassName("selected")[0];
 
-    selectedTab.removeAttribute("id");
-    clickedTab.setAttribute("id", "selected");
+    // selectedTab.removeAttribute("id");
+    selectedTab.classList.remove("selected");
+    clickedTab.classList.add("selected")
+    // clickedTab.setAttribute("id", "selected");
 };
