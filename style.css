@@ -30,3 +30,7 @@ body{
     background-color: #376180;
     color: whitesmoke;
 }
+
+#uknews, #football, #travel{
+    display: none;
+}
