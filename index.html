@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>The Guardian Tabbed Component </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="api-request.js"></script>
 </head>
 <body>
+
+<div class="tabComponent">
+    <div class="tabHeader">
+        <div class="header" id="selected" onclick="changeSelectedTab(this)">UK News</div>
+        <div class="header" onclick="changeSelectedTab(this)">Football</div>
+        <div class="header" onclick="changeSelectedTab(this)">Travel</div>
+    </div>
+    <div class="content">
+
+        <div id="uknews"></div>
+        <div id="football"></div>
+        <div id="travel"></div>
+
+    </div>
+</div>
 
 </body>
 </html>

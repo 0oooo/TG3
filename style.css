@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    font-family: Helvetica;
+}
+
+.tabComponent, .header{
+    border: 1px solid black;
+}
+
+.tabComponent{
+    max-width: 50%;
+    min-height: 20rem;
+    margin: 20px 50px;
+    border-collapse: collapse;
+}
+
+.tabHeader{
+    display: flex;
+    justify-content: space-evenly;
+    min-height: 4rem;
+}
+
+.header{
+    width: 33%;
+    text-align: center;
+    padding-top: 1.2rem;
+}
+
+#selected{
+    background-color: #376180;
+    color: whitesmoke;
+}
